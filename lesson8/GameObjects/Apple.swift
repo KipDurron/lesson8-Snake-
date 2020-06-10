@@ -15,7 +15,7 @@ class Apple: SKShapeNode {
         lineWidth = 5
         self.position = position
         // Добавляем физическое тело, совпадающее с изображением яблока
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 10.0, center:CGPoint(x:5, y:5))
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 5.0, center:CGPoint(x:5, y:5))
         // Категория - яблоко
         self.physicsBody?.categoryBitMask = CollisionCategories.Apple
     }

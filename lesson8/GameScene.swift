@@ -164,11 +164,29 @@ extension GameScene: SKPhysicsContactDelegate {
         // создаем новое яблоко
                     createApple()
                 case CollisionCategories.EdgeBody: // проверяем, что это стенка экрана
-                   print(<#T##items: Any...##Any#>)
+                    restartGame()
+                    
                 default:
                     break
                 }
 
+    }
+    
+    func restartGame() {
+        self.removeAllActions()
+        self.removeAllChildren()
+        self.didMove(to: getNewView())
+    }
+    
+    func getNewView() -> SKView {
+        let skView = view!
+               // включаем отображение fps (количество кадров в секунду)
+        skView.showsFPS = true
+               // показывать количество объектов на экране
+        skView.showsNodeCount = true
+               // включаем произвольный порядок рендеринга объектов в узле
+        skView.ignoresSiblingOrder = true
+        return skView
     }
 }
 
