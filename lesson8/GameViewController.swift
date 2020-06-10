@@ -14,22 +14,20 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        // создаем экземпляр сцены
+        let scene = GameScene(size: view.bounds.size)
+        // получаем главную область экрана
+        let skView = view as! SKView
+        // включаем отображение fps (количество кадров в секунду)
+        skView.showsFPS = true
+        // показывать количество объектов на экране
+        skView.showsNodeCount = true
+        // включаем произвольный порядок рендеринга объектов в узле
+        skView.ignoresSiblingOrder = true
+        // режим отображения сцены, растягивается на все доступное пространство
+        scene.scaleMode = .resizeFill
+        // добавляем сцену на экран
+        skView.presentScene(scene)
     }
 
     override var shouldAutorotate: Bool {
